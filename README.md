@@ -20,4 +20,6 @@
 - 将代码关联到GitHub上，在GitHub上创建CoolWeather仓库，并克隆到本地
 - 添加第三方依赖库
 - 配置litepal数据库依赖，配置litepal.xml文件，配置LitePalApplication
-- 准备数据实体类
+- 准备数据实体类Province、City、County
+- 编写HttpUtil工具类用于执行OkHttp请求
+- 编写JsonUtil工具类用于解析服务器返回的Json数据，并保存到本地数据库
