@@ -52,11 +52,12 @@
 	`
 - 实现下拉刷新更新实时天气信息的功能：在ScrollView外层嵌套SwipeRefreshLayout
 - 实现切换城市查询天气的功能：
-1. 把城市界面ChooseAreaFragment作为滑动菜单嵌套在天气界面WeatherActivity中
-2. 首先在标题栏添加一个导航按钮用于打开侧滑菜单
-3. 在SwipeRefreshLayout外层嵌套DrawerLayout布局，该布局允许有两个子控件：第一个子控件SwipeRefreshLayout表示主屏幕显示的界面；第二个子控件Fragment表示表示滑动菜单显示的内容。注意第二个子控件要指定android:layout_gravity属性
-4. 在导航按钮的点击事件中打开滑动菜单：mDrawerLayout.openDrawer(GravityCompat.START);
-5. 需要在ChooseAreaFragment的点击事件中重新判断选择县区后的执行逻辑：如果是在MainActivity中则元逻辑不变；如果是在WeatherActivity中则关闭侧滑菜单、显示下拉刷新进度条、请求最新的天气数据
+	1. 把城市界面ChooseAreaFragment作为滑动菜单嵌套在天气界面WeatherActivity中
+	2. 首先在标题栏添加一个导航按钮用于打开侧滑菜单
+	3. 在SwipeRefreshLayout外层嵌套DrawerLayout布局，该布局允许有两个子控件：第一个子控件SwipeRefreshLayout表示主屏幕显示的界面；第二个子控件Fragment表示表示滑动菜单显示的内容。注意第二个子控件要指定android:layout_gravity属性
+	4. 在导航按钮的点击事件中打开滑动菜单：mDrawerLayout.openDrawer(GravityCompat.START);
+	5. 需要在ChooseAreaFragment的点击事件中重新判断选择县区后的执行逻辑：如果是在MainActivity中则元逻辑不变；如果是在WeatherActivity中则关闭侧滑菜单、显示下拉刷新进度条、请求最新的天气数据
+- 使用Service在后台运行一个服务来定时更新天气数据
 
 
 

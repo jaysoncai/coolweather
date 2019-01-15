@@ -36,7 +36,6 @@ import okhttp3.ResponseBody;
 
 public class ChooseAreaFragment extends Fragment {
 
-    private static final String TAG = "samuel";
     private static final String BASE_URL = "http://guolin.tech/api/china/";
     private static final String PROVINCE_TYPE = "province";
     private static final String CITY_TYPE = "city";
