@@ -2,10 +2,12 @@ package com.sam.coolweather;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,6 +90,14 @@ public class ChooseAreaFragment extends Fragment {
                 } else if (mCurrentPage.equals(CITY_TYPE)) {
                     selectedCity = cityList.get(position);
                     queryCounties();
+                } else if (mCurrentPage.equals(COUNTY_TYPE)) {
+                    // 携带weatherId跳转到天气展示界面，并关闭本身
+                    String weatherId = countyList.get(position).getWeatherId();
+                    Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                    intent.putExtra("weather_id", weatherId);
+                    Log.d(TAG, "onItemClick: weatherId=" + weatherId);
+                    startActivity(intent);
+                    getActivity().finish();
                 }
             }
         });

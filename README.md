@@ -7,6 +7,7 @@
  - AppKey：bc0418b57b2d4918819d3974ac1285d9
  - 获取任意城市的天气信息：http://guolin.tech/api/weather?cityid=CityId&key=AppKey
  eg: http://guolin.tech/api/weather?cityid=CN101190401&key=bc0418b57b2d4918819d3974ac1285d9
+ - 获取必应每日一图的API：http://guolin.tech/api/bing_pic
 
 - 使用第三方库：
 	com.squareup.okhttp3:okhttp:3.12.1
@@ -26,10 +27,26 @@
 - 编写ChooseAreaFragment实现省市区县三级列表的查看功能
 - 对照Json数据，编写天气GSON实体类
 - 编写天气界面activity_weather：
-1. weather_title：头部标题
-2. weather_now：中部当前天气信息
-3. weather_forecast：底部未来几天天气信息
-4. item_forecast：底部未来几天天气信息的item布局
-5. weather_aqi：空气质量信息布局
-6. weather_suggestion：生活建议信息布局
-7. activity_weather：把以上子布局组合到主界面中
+	1. weather_title：头部标题
+	2. weather_now：中部当前天气信息
+	3. weather_forecast：底部未来几天天气信息
+	4. item_forecast：底部未来几天天气信息的item布局
+	5. weather_aqi：空气质量信息布局
+	6. weather_suggestion：生活建议信息布局
+	7. activity_weather：把以上子布局组合到主界面中
+- 在JsonUtil工具类中添加解析天气Json数据的方法，将Json数据转化为GSON实体对象Weather
+- 编写WeatherActivity逻辑，主要功能是获取天气数据并填充到相应的组件界面上
+- 在ChooseAreaFragment中的点击事件中添加逻辑：判断区县的点击事件并携带weatherId跳转到WeatherActivity中
+- 添加随机背景图片，访问必应每日一图API
+- 简单设置沉浸式状态栏，只适配Android5.0以上系统(实现背景图和状态栏融合在一起的效果)
+	```
+	if (Build.VERSION.SDK_INT >= 21) {
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+        getWindow().setStatusBarColor(Color.TRANSPARENT);   // 设置状态栏颜色为透明
+	}
+	```
+- 简单设置沉浸式状态栏问题：标题几乎与状态栏贴合在一起造成不美观
+	`
+	android:fitsSystemWindows="true"
+	`

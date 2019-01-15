@@ -1,10 +1,13 @@
 package com.sam.coolweather.utils;
 
 import android.text.TextUtils;
+import android.util.Log;
 
+import com.google.gson.Gson;
 import com.sam.coolweather.db.City;
 import com.sam.coolweather.db.County;
 import com.sam.coolweather.db.Province;
+import com.sam.coolweather.gson.Weather;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,6 +19,8 @@ import org.json.JSONObject;
  * 解析服务器返回的 Json数据，并保存到本地数据库
  */
 public class JsonUtil {
+
+    private static final String TAG = "samuel";
 
     public static boolean handleProvinceResponse(String response) {
         if (!TextUtils.isEmpty(response)) {
@@ -77,5 +82,21 @@ public class JsonUtil {
         }
 
         return false;
+    }
+
+    public static Weather handleWeatherResponse(String response) {
+        if (!TextUtils.isEmpty(response)) {
+            try {
+                JSONObject jsonObject = new JSONObject(response);
+                JSONArray jsonArray = jsonObject.getJSONArray("HeWeather");
+                String weatherJson = jsonArray.get(0).toString();
+                Log.d(TAG, "handleWeatherResponse: weatherJson=" + weatherJson);
+                return new Gson().fromJson(weatherJson, Weather.class);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return null;
     }
 }

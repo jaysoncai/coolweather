@@ -19,13 +19,13 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Suggestion {
 
-    @SerializedName("cmf")
-    private Comfort comfort;
+    @SerializedName("comf")
+    public Comfort comfort;
 
     @SerializedName("cw")
-    private CarWash carWash;
+    public CarWash carWash;
 
-    private Sport sport;
+    public Sport sport;
 
     public class Comfort {
 

@@ -6,13 +6,13 @@ import java.util.List;
 
 /*
 {
-	"weather": [{
+	"HeWeather": [{
 		"status": "OK",
 		"basic": {},
 		"aqi": {},
 		"now": {},
 		"suggestion": {},
-		"daily_forecast": {}
+		"daily_forecast": []
 	}]
 }
  */
